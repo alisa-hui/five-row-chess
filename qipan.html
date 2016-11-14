@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>five</title>
+	<script src="js/jquery.js"></script>
+	<script src="js/index.js"></script>
+</head>
+<style>
+    .bBox{
+    	width:100%;
+    	background: url(img/s.png) no-repeat 0 0;
+    	background-size:cover;
+    	position:fixed;
+    	left:0;
+		top:0;
+		right: 0;
+		bottom: 0;
+		margin:auto;
+    	z-index: 0;
+    }
+    .sBox{
+    	width:450px;
+    	height:560px;
+    	position:absolute;
+		left:0;
+		top:0;
+		right: 0;
+		bottom: 0;
+		margin:auto;
+    }
+    .sBox img{
+    	width:150px;
+    	height:83px;
+    	position:absolute;
+		top:0;
+		left:310px;
+		z-index: 100;
+    }
+    .sBox .heimiao{
+    	left:-8px;
+    }
+    
+    .xiushi{
+    	width:450px;
+    	height:50px;
+    	position:absolute;
+    	top:56px;
+    	left:0;
+    	border:1px solid #000;
+    	border-bottom:none;
+    }
+    .xslogo{
+    	width:136px;
+    	height:50px;
+    	position:absolute;
+    	top:0;
+    	left:157px;
+    	background: url(img/logo.png) 0 0 no-repeat;
+    	background-size: 100% 100%;
+    }
+	#canvas{
+		position:absolute;
+		left:0;
+		top:106px;
+		border:1px solid #000;
+	}
+	#canvas1,#canvas2{
+		position:absolute;
+		top:105px;
+		right: 140px;
+	}
+	#canvas1{
+		left:140px;
+	}
+	.alert{
+		width:269px;
+		height:202px;
+		position: absolute;
+		left:0;
+		top:0;
+		right: 0;
+		bottom: 0;
+		margin:auto;
+		background: url(img/images/lt.png) no-repeat 0 0;
+		box-shadow:0 0 0 800px rgba(0,0,0,0.4) ;
+		display:none;
+	}
+	@keyframes alert{
+		from{
+			display:none;
+			transform:scale(0,0) rotate(0deg,0deg);
+		}
+		to{
+			transform:scale(1,1) rotate(360deg,360deg);
+			display:block;
+		}
+	}
+	div.active{
+		animation: alert 0.8s ease-in 1 forwards;
+	}
+	.v{
+		width:269px;
+		height:50px;
+		position: absolute;
+		left:0;
+		top:100px;
+		font-size: 22px;
+		color:#fff;
+		font-family: '华文行楷';
+		line-height: 50px;
+		text-align: center;
+	}
+	.xuan{
+		width:269px;
+		height:56px;
+		position: absolute;
+		left:4px;
+		top:145px;
+	}
+	.xa1,.xa2{
+		width:120px;
+		height:42px;
+		margin:4px;
+		float:left;
+	}
+	.jiao{
+		width:459px;
+		height:568px;
+		position:absolute;
+		left:0;
+		top:0;
+		right: 0;
+		bottom: 0;
+		margin:auto;
+		z-index: 120;
+		display:block;
+		background: url(img/wan.png) no-repeat 0 0;
+	}
+	.wanfa{
+		width:100px;
+		height:40px;
+		position:absolute;
+        top:60px;
+        left:0;
+        right:0;
+        margin:auto;
+        line-height: 40px;
+        text-align: center;
+        color:#fff;
+        font-size: 30px;
+        letter-spacing: 10px;
+	} 
+	.close{
+		width:60px;
+		height:60px;
+		position: absolute;
+		right:0;
+		top:0;
+		cursor: pointer;
+	}   
+	.caozuo1,.caozuo2{
+		width:200px;
+		height:auto;
+		position: absolute;
+		right:10px;
+		bottom:60px;
+	}
+	.caozuo1{
+		left:40px;
+	}
+	.caozuo1 div,.caozuo2 div{
+		width:126px;
+		height:53px;
+		margin:10px 20px;
+		text-align: center;
+		line-height: 70px;
+		background: url(img/an.png) no-repeat 0 0;
+		background-size: 100%;
+		color:#fff;
+		font-size: 16px;
+		font-weight: bold;
+		cursor: pointer;
+	}
+	.caozuo1 .move{
+		color:black;
+	}
+	.baimiao,.heimiao{
+		position: absolute;
+		top:30px;
+		left:0;
+		width:246px;
+		height:128px;
+	}
+	.qipu{
+		width:0px;
+		height:0px;
+		position: absolute;
+		left:0;
+		top:0;
+		right: 0;
+		bottom: 0;
+		margin:auto;
+		background: #fff;
+		z-index: 200;
+		overflow: hidden;
+		transition: all 0.8s ease-in;
+	}
+	img.imgs{
+		width:450px;
+		height:450px;
+		position: absolute;
+		left:0;
+		top:0;
+		background: #fff;
+		z-index: 200;
+	}
+	a.as{
+		width:450px;
+		height:450px;
+		position: absolute;
+		left:0;
+		top:0;
+		z-index: 201;
+	}
+	.closet{
+		width:30px;
+		height:30px;
+		position: absolute;
+		top:40px;
+		right: -20px;
+		z-index:999;
+		font-size: 20px;
+		text-align: center;
+		line-height: 30px;
+		border-radius: 50%;
+		background: #fff;
+		cursor: pointer;
+		display:none;
+	}
+</style>
+<body>
+	<div class="bBox">
+		<div class="jiao">
+			<div class="wanfa">
+				玩法
+			</div>
+			<div class="close"></div>
+		</div>
+		<audio id="audio"src="2.wav"></audio>
+		<div class="sBox">
+			 <img src="img/baimao.png" class="baimiao"/>
+		     <img src="img/heimao.png" class="heimiao"/>
+		     <div class="xiushi">
+		     	<div class="xslogo"></div>
+		     </div>
+		     <div class="closet">x</div>
+		     <canvas id="canvas" width="450" height="450"></canvas>			
+		</div>
+
+		<canvas id="canvas1" width="100" height="100"></canvas>
+		<canvas id="canvas2" width="100" height="100"></canvas>
+		<img src="img/bb.png" alt=""id="img1" hidden/>
+		<img src="img/hb.png" alt=""id="img2" hidden/>
+		<img src="img/bq.png" alt=""id="img3" hidden/>
+		<img src="img/hq.png" alt=""id="img4" hidden/>
+			<div class="alert">
+				<div class="v"></div>
+				<div class="xuan">
+					<a href="" class="xa1"></a>
+					<a href="index.html" class="xa2"></a>
+				</div>
+			</div>
+		<div class="caozuo1">
+			<div class="person">
+				人人对战
+			</div>
+			<div class="com  move">
+				人机对战
+			</div>
+			<div class="web">
+				网络对战
+			</div>
+			<div class="manual">
+				查看棋谱
+			</div>
+			<div class="pro">
+				成就
+			</div>
+		</div>
+		<div class="caozuo2">
+			<div class="shezhi">
+				设置
+			</div>
+			<div class="renshu">
+				认输
+			</div>
+			<div class="huiqi">
+				悔棋
+			</div>
+			<div class="newg">
+				重玩
+			</div>
+			<div class="tuichu">
+				退出
+			</div>
+		</div>
+	</div>
+	<div class="qipu"></div>
+</body>
+</html>
