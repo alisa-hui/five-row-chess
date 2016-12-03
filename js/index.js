@@ -1,4 +1,5 @@
 $(function(){
+	var audios=$("#audios").get(0);
 	var audio=$("#audio").get(0);
 	var canvas=$("#canvas").get(0);
 	var canvas1=$("#canvas1").get(0);
@@ -30,6 +31,7 @@ $(function(){
 	var qizi={};
 	var gamestatus='pause';
 	var obj=[];
+	var qians=true;
 	//关闭玩法
 	var t1;
 	close.on('click',function(){
@@ -188,10 +190,18 @@ $(function(){
 		ctx.translate(l(x),l(y))
 		if(color=='black'){
 			ctx.drawImage(img4,0,0,155,155,-12,-12,24,24);
-			audio.play();
+			if(qians){
+				audios.play();
+			}else{
+				audios.pause();
+			}
 		}else{
 			ctx.drawImage(img3,0,0,155,155,-12,-12,24,24);
-			audio.play()
+			if(qians){
+				audios.play();
+			}else{
+				audios.pause();
+			}
 		}
 		ctx.restore();
 		qizi[p(x,y)]=color;
@@ -376,6 +386,24 @@ $(function(){
 				count4++
 		}	
 		return Math.max(count1,count2,count3,count4)
-};  
+}; 
+//背景音效
+$(audio).on('canplay',function(){
+	audio.play();
+	return false;
+})
+//播放暂停事件
+	$('.pro').on("click",function(){
+			if(audio.paused){
+				audio.play();
+			}else{
+				audio.pause();
+			}
+			return false;
+   })
+//背景音效
+	$('.shezhi').on("click",function(){
+			qians=!qians;
+   })
 
 })

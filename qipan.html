@@ -238,6 +238,18 @@
 		cursor: pointer;
 		display:none;
 	}
+	.settings{
+		width:450px;
+		height:450px;
+		position: absolute;
+		left:0;
+		right:0;
+		top:0;
+		bottom:0;
+		z-index: 200;
+		margin:auto;
+		background:red;
+	}
 </style>
 <body>
 	<div class="bBox">
@@ -247,7 +259,8 @@
 			</div>
 			<div class="close"></div>
 		</div>
-		<audio id="audio"src="2.wav"></audio>
+		<audio id="audios"src="2.wav"></audio>
+		<audio id="audio"src="1.mp3" loop controls></audio>
 		<div class="sBox">
 			 <img src="img/baimao.png" class="baimiao"/>
 		     <img src="img/heimao.png" class="heimiao"/>
@@ -285,12 +298,12 @@
 				查看棋谱
 			</div>
 			<div class="pro">
-				成就
+				背景音乐
 			</div>
 		</div>
 		<div class="caozuo2">
 			<div class="shezhi">
-				设置
+				音效
 			</div>
 			<div class="renshu">
 				认输
